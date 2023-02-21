@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Language Decoder</title>
+    <style>
+      /* Add some basic styling */
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Language Decoder</h1>
+    <label for="input">Enter text to decode:</label>
+    <input type="text" id="input" placeholder="Enter text...">
+    <button onclick="decode()">Decode</button>
+    <div id="result"></div>
+    <script>
+      function decode() {
+        // Get the input value
+        var input = document.getElementById("input").value;
+        
+        // Perform the decoding logic here
+        // For example, replace all "a" with "b"
+        var decoded = input.replace(/a/g, "b");
+        
+        // Update the result element with the decoded text
+        document.getElementById("result").innerHTML = "Decoded text: " + decoded;
+      }
+    </script>
+  </body>
+</html>
