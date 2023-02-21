@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Surtr Language Decoder</title>
+    <title>Surtr Language Translator</title>
     <style>
       /* Add some basic styling */
       input {
@@ -29,7 +29,7 @@
     </style>
   </head>
   <body>
-    <h1>Surtr Language Translator</h1>
+    <h1>Surtr Language Decoder</h1>
     <label for="input">Enter text to decode:</label>
     <input type="text" id="input" placeholder="Enter text...">
     <button onclick="decode()">Decode</button>
@@ -41,7 +41,38 @@
         
         // Perform the decoding logic here
         // For example, replace all "a" with "b"
-        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, "envsigfjohlkbmuywtdracqzpxENVSIGFJOHLKBMUYWTDRACQZPX");
+        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyz]/g, function(match) {
+          switch (match.toLowerCase()) {
+            case "a": return "e";
+            case "b": return "n";
+            case "c": return "v";
+            case "d": return "s";
+            case "e": return "i";
+            case "f": return "g";
+            case "g": return "f";
+            case "h": return "j";
+            case "i": return "o";
+            case "j": return "h";
+            case "k": return "l";
+            case "l": return "k";
+            case "m": return "b";
+            case "n": return "m";
+            case "o": return "u";
+            case "p": return "y";
+            case "q": return "w";
+            case "r": return "t";
+            case "s": return "d";
+            case "t": return "r";
+            case "u": return "a";
+            case "v": return "c";
+            case "w": return "q";
+            case "x": return "z";
+            case "y": return "p";
+            case "z": return "x";
+          }
+        });
+        
+        console.log(decoded);
         
         // Update the result element with the decoded text
         document.getElementById("result").innerHTML = "Decoded text: " + decoded;
