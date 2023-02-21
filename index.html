@@ -40,7 +40,7 @@
         var input = document.getElementById("input").value;
         
         // Perform the decoding logic here
-        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyz]/g, function(match) {
+        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, function(match) {
           switch (match.toLowerCase()) {
             case "a": return "e";
             case "b": return "n";
