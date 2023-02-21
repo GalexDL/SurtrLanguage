@@ -37,11 +37,11 @@
     <script>
       function decode() {
         // Get the input value
-        var input = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var input = document.getElementById("input").value;
         
         // Perform the decoding logic here
         // For example, replace all "a" with "b"
-        var decoded = input.replace(/[envsigfjohlkbmuywtdracqzpxENVSIGFJOHLKBMUYWTDRACQZPX]/g, "b");
+        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, "envsigfjohlkbmuywtdracqzpxENVSIGFJOHLKBMUYWTDRACQZPX");
         
         // Update the result element with the decoded text
         document.getElementById("result").innerHTML = "Decoded text: " + decoded;
