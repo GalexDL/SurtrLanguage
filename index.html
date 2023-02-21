@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Language Decoder</title>
+    <title>Surtr Language Decoder</title>
     <style>
       /* Add some basic styling */
       input {
@@ -37,11 +37,11 @@
     <script>
       function decode() {
         // Get the input value
-        var input = document.getElementById("input").value;
+        var input = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
         // Perform the decoding logic here
         // For example, replace all "a" with "b"
-        var decoded = input.replace(/a/g, "b");
+        var decoded = input.replace(/[envsigfjohlkbmuywtdracqzpxENVSIGFJOHLKBMUYWTDRACQZPX]/g, "b");
         
         // Update the result element with the decoded text
         document.getElementById("result").innerHTML = "Decoded text: " + decoded;
