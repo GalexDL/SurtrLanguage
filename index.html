@@ -29,7 +29,7 @@
     </style>
   </head>
   <body>
-    <h1>Surtr Language Decoder</h1>
+    <h1>Surtr Language Translator</h1>
     <label for="input">Enter text to decode:</label>
     <input type="text" id="input" placeholder="Enter text...">
     <button onclick="decode()">Decode</button>
@@ -40,7 +40,6 @@
         var input = document.getElementById("input").value;
         
         // Perform the decoding logic here
-        // For example, replace all "a" with "b"
         var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyz]/g, function(match) {
           switch (match.toLowerCase()) {
             case "a": return "e";
@@ -69,6 +68,32 @@
             case "x": return "z";
             case "y": return "p";
             case "z": return "x";
+            case "A": return "E";
+            case "B": return "N";
+            case "C": return "V";
+            case "D": return "S";
+            case "E": return "I";
+            case "F": return "G";
+            case "G": return "F";
+            case "H": return "J";
+            case "I": return "O";
+            case "J": return "H";
+            case "K": return "L";
+            case "L": return "K";
+            case "M": return "B";
+            case "N": return "M";
+            case "O": return "U";
+            case "P": return "Y";
+            case "Q": return "W";
+            case "R": return "T";
+            case "S": return "D";
+            case "T": return "R";
+            case "U": return "A";
+            case "V": return "C";
+            case "W": return "Q";
+            case "X": return "Z";
+            case "Y": return "P";
+            case "Z": return "X";
           }
         });
         
