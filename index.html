@@ -167,17 +167,20 @@
       }
       document.getElementById("output").textContent = output;
     }
+    <!-- Copy Output -->
     function copy() {
       const output = document.getElementById("output");
       output.select();
       document.execCommand("copy");
       alert("Copied to clipboard: " + output.value);
     }
+    <!-- Tweet Output -->
     function tweet() {
       const text = document.getElementById("output").textContent;
       const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
       window.open(url, "share", "width=550,height=450");
 }
+    <!-- Dark Mode -->
     function toggleDarkMode() {
       const body = document.body;
       body.classList.toggle('dark-mode');
