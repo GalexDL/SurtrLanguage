@@ -95,7 +95,19 @@
             case "X": return "Z";
             case "Y": return "P";
             case "Z": return "X";
+        document.getElementByID("output").textContent = decoded;    
           }
+          
+          function copy() {
+            var output = document.getElementById("output");
+            var range = document.createRange();
+            range.selectNode(output);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+          }
+
         });
         
         console.log(decoded);
