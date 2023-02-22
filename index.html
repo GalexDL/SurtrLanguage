@@ -2,10 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Surtr Translator</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
+  <title>Surtr Language Decoder</title>
   <style>
     body {
       font-family: sans-serif;
@@ -31,16 +28,28 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    button.copy {
+      background-color: #00C47F;
+      color: white;
+    }
+    button.tweet {
+      background-color: #26a7de;
+      color: white;
+    }
+
   </style>
 </head>
 <body>
   <h1>Surtr Language Translator</h1>
+  <p>This tool translate text written in the fictional Surtr language.</p>
   <label for="input">Enter text to decode:</label>
   <textarea id="input"></textarea>
   <div>
     <button onclick="decode()">Decode</button>
     <button onclick="reverse()">Reverse</button>
-    <button onclick="copy()">Copy</button>
+    <button class="copy" onclick="copy()">Copy</button>
+    <button class="tweet" onclick="tweet()">Tweet</button>
+
   </div>
   <label for="output">Decoded text:</label>
   <textarea id="output" readonly></textarea>
@@ -143,7 +152,14 @@
       document.execCommand("copy");
       alert("Copied to clipboard: " + output.value);
     }
+    function tweet() {
+      const text = document.getElementById("output").textContent;
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(url, "share", "width=550,height=450");
+}
+
 
   </script>
 </body>
 </html>
+
