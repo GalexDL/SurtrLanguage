@@ -60,7 +60,6 @@
 <body>
   <h1>Surtr Language Translator</h1>
   <p>This tool translates text to Surtr and vice versa!</p>
-  <p>Update: Added Dark Mode</p>
   <label for="input">Enter text to decode:</label>
   <textarea id="input"></textarea>
   <div>
@@ -129,7 +128,7 @@
       "Y": "P",
       "Z": "X"
     };
-    
+    // Translation Function
     function decode() {
       const input = document.getElementById("input").value;
       let output = "";
@@ -148,7 +147,7 @@
       }
       document.getElementById("output").textContent = output;
     }
-    
+    // Reverse Function
     function reverse() {
       const input = document.getElementById("output").textContent;
       let output = "";
@@ -167,20 +166,20 @@
       }
       document.getElementById("output").textContent = output;
     }
-    <!-- Copy Output -->
+    // Copy Output
     function copy() {
       const output = document.getElementById("output");
       output.select();
       document.execCommand("copy");
       alert("Copied to clipboard: " + output.value);
     }
-    <!-- Tweet Output -->
+    // Tweet Output 
     function tweet() {
       const text = document.getElementById("output").textContent;
       const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
       window.open(url, "share", "width=550,height=450");
 }
-    <!-- Dark Mode -->
+    // Dark Mode
     function toggleDarkMode() {
       const body = document.body;
       body.classList.toggle('dark-mode');
