@@ -1,110 +1,147 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <title>Surtr Language Translator</title>
-    <style>
-      /* Add some basic styling */
-      input {
-        width: 100%;
-        padding: 10px;
-        font-size: 18px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      #result {
-        margin-top: 20px;
-        font-size: 18px;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Surtr Language Translator</h1>
-    <label for="input">Enter text to decode:</label>
-    <input type="text" id="input" placeholder="Enter text...">
+<head>
+  <meta charset="utf-8">
+  <title>Surtr Language Decoder</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: monospace;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Surtr Language Translator</h1>
+  <p>This tool translate text written in the fictional Surtr language.</p>
+  <label for="input">Enter text to decode:</label>
+  <textarea id="input"></textarea>
+  <div>
     <button onclick="decode()">Decode</button>
-    <div id="result"></div>
-    <script>
-      function decode() {
-        // Get the input value
-        var input = document.getElementById("input").value;
-        
-        // Perform the decoding logic here
-        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, function(match) {
-          switch (match) {
-            case "a": return "e";
-            case "b": return "n";
-            case "c": return "v";
-            case "d": return "s";
-            case "e": return "i";
-            case "f": return "g";
-            case "g": return "f";
-            case "h": return "j";
-            case "i": return "o";
-            case "j": return "h";
-            case "k": return "l";
-            case "l": return "k";
-            case "m": return "b";
-            case "n": return "m";
-            case "o": return "u";
-            case "p": return "y";
-            case "q": return "w";
-            case "r": return "t";
-            case "s": return "d";
-            case "t": return "r";
-            case "u": return "a";
-            case "v": return "c";
-            case "w": return "q";
-            case "x": return "z";
-            case "y": return "p";
-            case "z": return "x";
-            case "A": return "E";
-            case "B": return "N";
-            case "C": return "V";
-            case "D": return "S";
-            case "E": return "I";
-            case "F": return "G";
-            case "G": return "F";
-            case "H": return "J";
-            case "I": return "O";
-            case "J": return "H";
-            case "K": return "L";
-            case "L": return "K";
-            case "M": return "B";
-            case "N": return "M";
-            case "O": return "U";
-            case "P": return "Y";
-            case "Q": return "W";
-            case "R": return "T";
-            case "S": return "D";
-            case "T": return "R";
-            case "U": return "A";
-            case "V": return "C";
-            case "W": return "Q";
-            case "X": return "Z";
-            case "Y": return "P";
-            case "Z": return "X";   
+    <button onclick="reverse()">Reverse</button>
+    <button onclick="copy()">Copy</button>
+  </div>
+  <label for="output">Decoded text:</label>
+  <textarea id="output" readonly></textarea>
+  <script>
+    const surtr = {
+      "a": "e",
+      "b": "n",
+      "c": "v",
+      "d": "s",
+      "e": "i",
+      "f": "g",
+      "g": "f",
+      "h": "j",
+      "i": "o",
+      "j": "h",
+      "k": "l",
+      "l": "k",
+      "m": "b",
+      "n": "m",
+      "o": "u",
+      "p": "y",
+      "q": "w",
+      "r": "t",
+      "s": "d",
+      "t": "r",
+      "u": "a",
+      "v": "c",
+      "w": "q",
+      "x": "z",
+      "y": "p",
+      "z": "x",
+      "A": "E",
+      "B": "N",
+      "C": "V",
+      "D": "S",
+      "E": "I",
+      "F": "G",
+      "G": "F",
+      "H": "J",
+      "I": "O",
+      "J": "H",
+      "K": "L",
+      "L": "K",
+      "M": "B",
+      "N": "M",
+      "O": "U",
+      "P": "Y",
+      "Q": "W",
+      "R": "T",
+      "S": "D",
+      "T": "R",
+      "U": "A",
+      "V": "C",
+      "W": "Q",
+      "X": "Z",
+      "Y": "P",
+      "Z": "X"
+    };
+    
+    function decode() {
+      const input = document.getElementById("input").value;
+      let output = "";
+      for (let i = 0; i < input.length; i++) {
+        let found = false;
+        for (const key in surtr) {
+          if (input[i] === key) {
+            output += surtr[key];
+            found = true;
+            break;
           }
-          
-
-        });
-        
-        console.log(decoded);
-        
-        // Update the result element with the decoded text
-        document.getElementById("result").innerHTML = "Decoded text: " + decoded;
+        }
+        if (!found) {
+          output += input[i];
+        }
       }
-    </script>
-  </body>
+      document.getElementById("output").textContent = output;
+    }
+    
+    function reverse() {
+      const input = document.getElementById("output").textContent;
+      let output = "";
+      for (let i = 0; i < input.length; i++) {
+        let found = false;
+        for (const key in surtr) {
+          if (input[i] === surtr[key]) {
+            output += key;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          output += input[i];
+        }
+      }
+      document.getElementById("output").textContent = output;
+    }
+    function copy() {
+      const output = document.getElementById("output");
+      output.select();
+      document.execCommand("copy");
+      alert("Copied to clipboard: " + output.value);
+    }
+
+  </script>
+</body>
 </html>
