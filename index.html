@@ -94,19 +94,87 @@
             case "W": return "Q";
             case "X": return "Z";
             case "Y": return "P";
-            case "Z": return "X";
-        document.getElementByID("output").textContent = decoded;    
+            case "Z": return "X";   
           }
           
-          function copy() {
-            var output = document.getElementById("output");
-            var range = document.createRange();
-            range.selectNode(output);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-            window.getSelection().removeAllRanges();
+
+        });
+        
+        console.log(decoded);
+        
+        // Update the result element with the decoded text
+        document.getElementById("result").innerHTML = "Decoded text: " + decoded;
+      }
+    </script>
+  </body>
+    <body>
+    <h1>Surtr Language Translator</h1>
+    <label for="input">Enter text to decode:</label>
+    <input type="text" id="input" placeholder="Enter text...">
+    <button onclick="decode()">Decode</button>
+    <div id="result"></div>
+    <script>
+      function decode() {
+        // Get the input value
+        var input = document.getElementById("input").value;
+        
+        // Perform the decoding logic here
+        var decoded = input.replace(/[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]/g, function(match) {
+          switch (match) {
+            case "a": return "e";
+            case "b": return "n";
+            case "c": return "v";
+            case "d": return "s";
+            case "e": return "i";
+            case "f": return "g";
+            case "g": return "f";
+            case "h": return "j";
+            case "i": return "o";
+            case "j": return "h";
+            case "k": return "l";
+            case "l": return "k";
+            case "m": return "b";
+            case "n": return "m";
+            case "o": return "u";
+            case "p": return "y";
+            case "q": return "w";
+            case "r": return "t";
+            case "s": return "d";
+            case "t": return "r";
+            case "u": return "a";
+            case "v": return "c";
+            case "w": return "q";
+            case "x": return "z";
+            case "y": return "p";
+            case "z": return "x";
+            case "A": return "E";
+            case "B": return "N";
+            case "C": return "V";
+            case "D": return "S";
+            case "E": return "I";
+            case "F": return "G";
+            case "G": return "F";
+            case "H": return "J";
+            case "I": return "O";
+            case "J": return "H";
+            case "K": return "L";
+            case "L": return "K";
+            case "M": return "B";
+            case "N": return "M";
+            case "O": return "U";
+            case "P": return "Y";
+            case "Q": return "W";
+            case "R": return "T";
+            case "S": return "D";
+            case "T": return "R";
+            case "U": return "A";
+            case "V": return "C";
+            case "W": return "Q";
+            case "X": return "Z";
+            case "Y": return "P";
+            case "Z": return "X";   
           }
+          
 
         });
         
